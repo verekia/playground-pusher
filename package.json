@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sharyn/util": "^3.13.1",
     "next": "^9.5.2",
     "pusher": "^3.0.1",
     "pusher-js": "^7.0.0",

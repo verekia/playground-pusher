@@ -1,6 +1,6 @@
 import { NextApiRequest as Req, NextApiResponse as Res } from 'next'
-
 import Pusher from 'pusher'
+import wait from '@sharyn/util/wait'
 
 const pusher = new Pusher({
   appId: process.env.PUSHER_APP_ID,
@@ -14,5 +14,6 @@ export default async (req: Req, res: Res) => {
   console.log(req.body)
   pusher.trigger('my-channel', 'server-event', req.body)
   console.log('sent to pusher')
+  await wait(2000)
   res.status(200).end()
 }
