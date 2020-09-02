@@ -11,6 +11,8 @@ const pusher = new Pusher({
 })
 
 export default async (req: Req, res: Res) => {
+  console.log(req.body)
   pusher.trigger('my-channel', 'server-event', req.body)
+  console.log('sent to pusher')
   res.status(200).end()
 }

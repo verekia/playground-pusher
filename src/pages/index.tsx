@@ -11,6 +11,7 @@ const IndexPage = () => {
 
   useEffect(() => {
     channel.bind('server-event', (data) => {
+      console.log('received data')
       messagesRef.current = [...messagesRef.current, data.message]
       setMessages(messagesRef.current)
     })
