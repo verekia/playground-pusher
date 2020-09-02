@@ -6,15 +6,11 @@ const channel = pusher.subscribe('my-channel')
 
 const IndexPage = () => {
   const inputRef = useRef(null)
-  const messagesRef = useRef([])
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
     channel.bind('server-event', (data) => {
-      console.log(data)
-      console.log(messagesRef.current)
-      messagesRef.current = [...messagesRef.current, data.message]
-      setMessages(messagesRef.current)
+      setMessages(previousMessages => [...previousMessages, data.message])
     })
   }, [])
 
